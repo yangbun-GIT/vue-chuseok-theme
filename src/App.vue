@@ -68,7 +68,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, nextTick, CSSProperties } from 'vue';
+// 'CSSProperties' 앞에 'type'을 추가하여 타입 전용 import로 명시
+import { ref, onMounted, nextTick, type CSSProperties } from 'vue';
 
 // 스타일
 const fireflyStyles = ref<CSSProperties[]>([]);
