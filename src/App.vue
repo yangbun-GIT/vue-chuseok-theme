@@ -188,11 +188,9 @@ body, html {
 
 .chuseok-scene {
   position: relative;
-  /* 화면 비율 유지를 위해 vmin 사용 */
-  width: 100vmin;
-  height: 100vmin;
-  max-width: 100vw;
-  max-height: 100vh;
+  /* 화면을 가득 채우도록 수정 */
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
