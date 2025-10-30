@@ -4,9 +4,10 @@
 
 ### 🔗 배포 URL (Deployment URL)
 
+<br>
+
 * **프로젝트 체험하기:** https://yangbun-git.github.io/vue-chuseok-theme/
 
-<br>
 -----
 
 ### 🚀 프로젝트 개요 & 기술 스택
