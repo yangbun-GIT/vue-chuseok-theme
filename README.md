@@ -1,5 +1,43 @@
-# Vue 3 + TypeScript + Vite
+한가위(추석) 맞이 특별 웹페이지
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+배포 링크: https://yangbun-git.github.io/vue-chuseok-theme/
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+Vue 3, Vite, TypeScript를 사용하여 풍요로운 한가위 분위기를 느낄 수 있도록 제작된 인터랙티브 웹페이지입니다. CSS 애니메이션을 활용한 밤하늘, 보름달, 별똥별 효과와 함께, 사용자가 직접 덕담을 남기고 볼 수 있는 기능을 구현했습니다.
+
+1. 기술 스택 (Tech Stack)
+
+Framework: Vue 3 (Composition API with <script setup>)
+
+Bundler: Vite
+
+Language: TypeScript
+
+Styling: CSS (Scoped Styles)
+
+Fonts: Google Fonts (Gowun Dodum)
+
+2. 주요 기능
+
+예술적 배경: CSS 애니메이션을 활용한 반짝이는 별, 별똥별, 그라데이션 밤하늘 구현
+
+보름달 애니메이션: float 애니메이션을 통해 둥실 떠오르는 보름달 효과
+
+인터랙티브 덕담: 사용자가 이름과 덕담을 입력하고 제출하면, 최신순으로 덕담 리스트에 실시간 반영
+
+반응형 디자인: 데스크톱 및 모바일 환경에서 자연스럽게 표시되도록 반응형 스타일 적용
+
+3. 콘텐츠 생성 Prompt (Gemini)
+
+페이지의 주요 텍스트 콘텐츠는 Gemini를 통해 생성되었으며, 사용된 프롬프트는 다음과 같습니다.
+
+[Prompt 1: 메인 카피 및 헤더]
+"한가위를 주제로 하는 웹페이지의 메인 헤더 카피를 생성해줘. '풍요로운 한가위'라는 제목과 '더도 말고 덜도 말고 한가위만 같아라'는 유명한 속담을 부제로 넣어줘."
+
+[Prompt 2: 메시지 카드]
+"한가위 보름달을 보며 비는 소원에 대한 감성적인 메시지 카드를 작성해줘. 제목은 '소원 성취'로 하고, 둥근 보름달에 빗대어 풍요와 행복을 기원하는 내용으로 두세 줄 정도 부탁해."
+
+[Prompt 3: 전통 소개]
+"추석의 주요 전통 3가지(차례, 송편, 강강술래)에 대해, 각각의 이름(영문명 포함), 대표 아이콘(이모지), 그리고 '조상님께 감사드리는' 같은 느낌의 핵심적인 한두 줄 설명을 생성해줘. 그리드 레이아웃에 어울리게 짧고 간결하게."
+
+[Prompt 4: 기능 섹션 제목]
+"사용자들이 서로 따뜻한 명절 인사를 나눌 수 있는 방명록 같은 기능 섹션을 추가하고 싶어. 이 섹션의 제목으로 '덕담 나누기'가 어떨까? 이 제목으로 섹션을 생성해줘."
