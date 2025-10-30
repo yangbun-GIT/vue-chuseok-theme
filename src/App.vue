@@ -105,7 +105,7 @@ onMounted(() => {
 });
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 /*
  * :global() 선택자
  * 이 컴포넌트의 스타일이면서 동시에 'body' 태그(앱 바깥 영역)에도
@@ -129,23 +129,25 @@ onMounted(() => {
    * 'twinkling' 효과를 줍니다.
    * position: fixed로 설정하여 스크롤과 무관하게 고정됩니다.
    */
-  &::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 200vw; /* 200% * 200% 크기 */
-    height: 200vh;
-    /* * SVG를 인라인으로 사용하여 작은 점(별)을 생성합니다.
+}
+
+:global(body)::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200vw; /* 200% * 200% 크기 */
+  height: 200vh;
+  /* * SVG를 인라인으로 사용하여 작은 점(별)을 생성합니다.
      * 외부 이미지 요청 없이 깔끔하게 처리됩니다.
      */
-    background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><circle cx="1" cy="1" r="1" fill="white"/><circle cx="3" cy="3" r="1" fill="white"/></svg>') repeat;
-    background-size: 400px 400px; /* 별 밀도 조절 */
-    animation: twinkling 60s linear infinite;
-    z-index: 0; /* 모든 콘텐츠보다 뒤에 위치 */
-    opacity: 0.3;
-  }
+  background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><circle cx="1" cy="1" r="1" fill="white"/><circle cx="3" cy="3" r="1" fill="white"/></svg>') repeat;
+  background-size: 400px 400px; /* 별 밀도 조절 */
+  animation: twinkling 60s linear infinite;
+  z-index: 0; /* 모든 콘텐츠보다 뒤에 위치 */
+  opacity: 0.3;
 }
+
 
 /*
  * 앱의 메인 컨테이너
@@ -158,11 +160,11 @@ onMounted(() => {
 
   /* 앱 내부에 그라데이션 배경과 별 효과 추가 */
   background: linear-gradient(
-          180deg,
-          #0b001a 0%,
-          #1f0033 30%,
-          #3b004a 70%,
-          #57005c 100%
+      180deg,
+      #0b001a 0%,
+      #1f0033 30%,
+      #3b004a 70%,
+      #57005c 100%
   );
   overflow: hidden; /* 별똥별이 밖으로 나가지 않도록 */
 }
@@ -220,6 +222,7 @@ onMounted(() => {
 .card-glass {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Safari Pomat */
   border-radius: 16px;
   padding: 1.5rem 2rem;
   margin-bottom: 2rem;
@@ -234,33 +237,34 @@ onMounted(() => {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
   margin-bottom: 2rem;
-
-  .item {
-    padding: 2rem 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  .card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-
-  h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin: 0.5rem 0;
-  }
-
-  p {
-    font-size: 0.9rem;
-    color: #dcdcdc;
-    margin: 0;
-    line-height: 1.4;
-  }
 }
+
+.tradition-grid .item {
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.tradition-grid .card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.tradition-grid h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+.tradition-grid p {
+  font-size: 0.9rem;
+  color: #dcdcdc;
+  margin: 0;
+  line-height: 1.4;
+}
+
 
 /* --- 덕담 나누기 폼 --- */
 .wish-form {
@@ -274,18 +278,21 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+}
 
-  @media (min-width: 600px) {
+/* SCSS에서 분리된 미디어 쿼리 */
+@media (min-width: 600px) {
+  .form-group {
     flex-direction: row;
-
-    input[type="text"]:first-child {
-      flex: 1; /* 이름 */
-    }
-    input[type="text"]:last-child {
-      flex: 3; /* 덕담 내용 */
-    }
+  }
+  .form-group input[type="text"]:first-child {
+    flex: 1; /* 이름 */
+  }
+  .form-group input[type="text"]:last-child {
+    flex: 3; /* 덕담 내용 */
   }
 }
+
 
 input[type="text"] {
   width: 100%; /* 모바일 기본값 */
@@ -297,17 +304,18 @@ input[type="text"] {
   font-family: 'Gowun Dodum', sans-serif;
   font-size: 1rem;
   box-sizing: border-box; /* 패딩 포함 */
-
-  &::placeholder {
-    color: #ccc;
-  }
-
-  &:focus {
-    outline: none;
-    border-color: #ffeea4;
-    box-shadow: 0 0 10px rgba(255, 238, 164, 0.3);
-  }
 }
+
+input[type="text"]::placeholder {
+  color: #ccc;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #ffeea4;
+  box-shadow: 0 0 10px rgba(255, 238, 164, 0.3);
+}
+
 
 .submit-btn {
   padding: 0.75rem 1rem;
@@ -320,12 +328,13 @@ input[type="text"] {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-
-  &:hover {
-    background-color: #fcfade;
-    box-shadow: 0 0 15px rgba(255, 238, 164, 0.5);
-  }
 }
+
+.submit-btn:hover {
+  background-color: #fcfade;
+  box-shadow: 0 0 15px rgba(255, 238, 164, 0.5);
+}
+
 
 /* --- 덕담 리스트 --- */
 .wish-list {
@@ -343,15 +352,16 @@ input[type="text"] {
   border-radius: 8px;
   margin-bottom: 0.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-
-  strong {
-    color: #ffeea4;
-    margin-right: 0.5em;
-  }
-  span {
-    color: #f0f0f0;
-  }
 }
+
+.wish-item strong {
+  color: #ffeea4;
+  margin-right: 0.5em;
+}
+.wish-item span {
+  color: #f0f0f0;
+}
+
 
 /* --- 애니메이션 --- */
 
@@ -402,21 +412,22 @@ input[type="text"] {
   }
 }
 
-/* 별 반짝임 (컴포넌트 내부 - 스크롤됨) */
-@mixin star-animation($duration) {
+/* * SCSS의 @mixin을 대체하는 일반 CSS
+ * 별 반짝임 (컴포넌트 내부 - 스크롤됨)
+ */
+#stars, #stars2, #stars3 {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: transparent;
-  animation: star-anim $duration linear infinite;
   opacity: 0.7;
   z-index: 2; /* #app-container의 배경 */
 }
 
 #stars {
-  @include star-animation(50s);
+  animation: star-anim 50s linear infinite;
   background-image: radial-gradient(1px 1px at 20px 30px, #eee, #0000),
   radial-gradient(1px 1px at 40px 70px, #fff, #0000),
   radial-gradient(1px 1px at 50px 160px, #ddd, #0000),
@@ -425,7 +436,7 @@ input[type="text"] {
   radial-gradient(1px 1px at 160px 120px, #ddd, #0000);
 }
 #stars2 {
-  @include star-animation(100s);
+  animation: star-anim 100s linear infinite;
   background-image: radial-gradient(1px 1px at 40px 40px, #eee, #0000),
   radial-gradient(1px 1px at 80px 120px, #fff, #0000),
   radial-gradient(1px 1px at 120px 200px, #ddd, #0000),
@@ -434,7 +445,7 @@ input[type="text"] {
   radial-gradient(1px 1px at 320px 240px, #ddd, #0000);
 }
 #stars3 {
-  @include star-animation(150s);
+  animation: star-anim 150s linear infinite;
   background-image: radial-gradient(1px 1px at 60px 60px, #eee, #0000),
   radial-gradient(1px 1px at 120px 180px, #fff, #0000),
   radial-gradient(1px 1px at 180px 300px, #ddd, #0000),
