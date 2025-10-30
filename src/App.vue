@@ -2,7 +2,7 @@
   <div class="chuseok-app">
     <!-- Google Fonts Import -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 
     <header class="app-header">
@@ -263,3 +263,4 @@
   }
 }
 </style>
+
